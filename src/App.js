@@ -1,15 +1,15 @@
-import { Fragment } from 'react';
 import Header from './UI/Header/Header';
-import MealsSummary from './components/MealsSummary/MealsSummary';
-import AvailableMeals from './components/AvailableMeals/AvailableMeals';
+import Meals from './components/Meals';
+import MealsContext from './store/MealsContext';
 
 function App() {
   return (
-    <Fragment>
+    <MealsContext.Provider value={{itemsTotal: 0}}>
       <Header/>
-      <MealsSummary/>
-      <AvailableMeals/>
-    </Fragment>
+      <main>
+        <Meals/>
+      </main>
+    </MealsContext.Provider>
   );
 }
 

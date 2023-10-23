@@ -1,23 +1,24 @@
 import styles from './Cart.module.css'
 import Modal from '../../UI/Modal/Modal'
-import CartItem from '../CartItem/CartItem'
 
-const Cart = () => {
+const Cart = (props) => {
+    const cartItems = <ul className={styles["cart-items"]}>
+        {
+            [{id: 'c1', name: 'Sushi', amount: 2, price: 12.99}].map(item => <li>{item.name}</li>)}</ul>;
+
+
     return (
         <Modal>                
-            <div className={styles["cart-items"]}>
-            <CartItem 
-                name="Sushi"
-                price={22.10}
-                amount={2}/>
+            <div>
+                {cartItems}
             </div>
             <div className={styles.total}>
-                <h3>Total Amount</h3>
-                <h3 >$88.99</h3>
+                <span>Total Amount</span>
+                <span >$88.99</span>
             </div>
             <div className={styles.actions}>
-                <button>Close</button>
-                <button>Order</button>
+                <button className={styles['button--alt']} onClick={props.closeButtonHandler}>Close</button>
+                <button className={styles.button}>Order</button>
             </div>
         </Modal>
     )
