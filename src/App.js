@@ -1,8 +1,9 @@
 import Header from './UI/Header/Header';
 import Meals from './components/Meals';
-import MealsContext from './store/MealsContext';
+import CartProvider from './store/CartProvider';
 import Cart from './components/Cart/Cart'
 import { useState } from 'react';
+
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false)
 
@@ -15,13 +16,13 @@ function App() {
   }
 
   return (
-    <MealsContext.Provider value={{itemsTotal: 0}}>
+    <CartProvider>
       {cartIsShown && <Cart onClose={hideCartHandler}/>}
       <Header onClick={showCartHandler}/>
       <main>
         <Meals/>
       </main>
-    </MealsContext.Provider>
+    </CartProvider>
   );
 }
 
