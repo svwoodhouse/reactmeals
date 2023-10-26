@@ -7,7 +7,9 @@ const Cart = (props) => {
     const ctx = useContext(MealsContext)
     const totalAmount = `$${ctx.itemsTotal.toFixed(2)}`
     const hasItems = ctx.items.length > 0
-    const cartItemRemoveHandler = id => {}
+    const cartItemRemoveHandler = id => {
+        ctx.removeItem(id)
+    }
     const cartItemAddHandler = item => {
         ctx.addItem({...item, amount:1})
     }
